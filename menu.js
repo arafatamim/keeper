@@ -1,82 +1,26 @@
-'use strict'
-const app = require('electron').app
-const Menu = require('electron').Menu
-const shell = require('electron').shell
+const app = require('electron').app;
+const Menu = require('electron').Menu;
 
-module.exports = function createMainMenu () {
+module.exports = function createMainMenu() {
   const template = [
     {
-      label: 'Keep',
+      label: 'Keeper',
       submenu: [
         {
-          label: 'Services',
-          role: 'services',
-          submenu: []
-        },
-        {
-          type: 'separator'
-        },
-        {
-          label: 'Hide Keep',
-          accelerator: 'Cmd+H',
-          role: 'hide'
-        },
-        {
-          label: 'Hide Others',
-          accelerator: 'Alt+Cmd+H',
-          role: 'hideothers'
-        },
-        {
-          label: 'Show All',
-          role: 'unhide'
+          label: 'About Keeper...',
+          click: () => {
+            
+          }
         },
         {
           type: 'separator'
         },
         {
           label: 'Quit',
-          accelerator: 'Cmd+Q',
+          accelerator: 'CmdOrCtrl+Q',
           click: () => {
-            app.quit()
+            app.quit();
           }
-        }
-      ]
-    },
-    {
-      label: 'Edit',
-      submenu: [
-        {
-          label: 'Undo',
-          accelerator: 'CmdOrCtrl+Z',
-          role: 'undo'
-        },
-        {
-          label: 'Redo',
-          accelerator: 'Shift+CmdOrCtrl+Z',
-          role: 'redo'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          label: 'Cut',
-          accelerator: 'CmdOrCtrl+X',
-          role: 'cut'
-        },
-        {
-          label: 'Copy',
-          accelerator: 'CmdOrCtrl+C',
-          role: 'copy'
-        },
-        {
-          label: 'Paste',
-          accelerator: 'CmdOrCtrl+V',
-          role: 'paste'
-        },
-        {
-          label: 'Select All',
-          accelerator: 'CmdOrCtrl+A',
-          role: 'selectall'
         }
       ]
     },
@@ -87,38 +31,15 @@ module.exports = function createMainMenu () {
           label: 'Reload',
           accelerator: 'CmdOrCtrl+R',
           click: (item, win) => {
-            if (win) win.reload()
-          }
-        },
-        {
-          label: 'Toggle Full Screen',
-          accelerator: 'Ctrl+Cmd+F',
-          click: (item, win) => {
-            if (win) win.setFullScreen(!win.isFullScreen())
+            if (win) win.reload();
           }
         },
         {
           label: 'Toggle Developer Tools',
           accelerator: 'Alt+Cmd+I',
           click: (item, win) => {
-            if (win) win.webContents.toggleDevTools()
+            if (win) win.webContents.toggleDevTools();
           }
-        }
-      ]
-    },
-    {
-      label: 'Window',
-      role: 'window',
-      submenu: [
-        {
-          label: 'Minimize',
-          accelerator: 'CmdOrCtrl+M',
-          role: 'minimize'
-        },
-        {
-          label: 'Close',
-          accelerator: 'CmdOrCtrl+W',
-          role: 'close'
         },
         {
           type: 'separator'
@@ -127,7 +48,7 @@ module.exports = function createMainMenu () {
           label: 'Notes',
           accelerator: 'CmdOrCtrl+1',
           click: (item, win) => {
-            win.webContents.send('navigate', 'home')
+            win.webContents.send('navigate', 'home');
           },
           type: 'radio',
           checked: true
@@ -136,7 +57,7 @@ module.exports = function createMainMenu () {
           label: 'Reminders',
           accelerator: 'CmdOrCtrl+2',
           click: (item, win) => {
-            win.webContents.send('navigate', 'reminders')
+            win.webContents.send('navigate', 'reminders');
           },
           type: 'radio'
         },
@@ -144,7 +65,7 @@ module.exports = function createMainMenu () {
           label: 'Archive',
           accelerator: 'CmdOrCtrl+3',
           click: (item, win) => {
-            win.webContents.send('navigate', 'archive')
+            win.webContents.send('navigate', 'archive');
           },
           type: 'radio'
         },
@@ -152,26 +73,14 @@ module.exports = function createMainMenu () {
           label: 'Trash',
           accelerator: 'CmdOrCtrl+4',
           click: (item, win) => {
-            win.webContents.send('navigate', 'trash')
+            win.webContents.send('navigate', 'trash');
           },
           type: 'radio'
         }
       ]
-    },
-    {
-      label: 'Help',
-      role: 'help',
-      submenu: [
-        {
-          label: 'View on GitHub',
-          click: () => {
-            shell.openExternal('http://github.com/andrepolischuk/keep')
-          }
-        }
-      ]
     }
-  ]
+  ];
 
-  const menu = Menu.buildFromTemplate(template)
-  Menu.setApplicationMenu(menu)
-}
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+};
