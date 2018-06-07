@@ -1,4 +1,5 @@
 const app = require('electron').app;
+const dialog = require('electron').dialog;
 const Menu = require('electron').Menu;
 
 module.exports = function createMainMenu() {
@@ -9,7 +10,11 @@ module.exports = function createMainMenu() {
         {
           label: 'About Keeper...',
           click: () => {
-            
+            dialog.showMessageBox({
+              buttons: ['OK'],
+              title: "About Keeper",
+              message: "Google Keep wrapper for the desktop.\n\ngithub.com/arafatamim/keeper"
+            });
           }
         },
         {
@@ -32,13 +37,6 @@ module.exports = function createMainMenu() {
           accelerator: 'CmdOrCtrl+R',
           click: (item, win) => {
             if (win) win.reload();
-          }
-        },
-        {
-          label: 'Toggle Developer Tools',
-          accelerator: 'Alt+Cmd+I',
-          click: (item, win) => {
-            if (win) win.webContents.toggleDevTools();
           }
         },
         {

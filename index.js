@@ -5,8 +5,6 @@ const config = require('./config');
 const createMainMenu = require('./menu');
 const createMainWindow = require('./window');
 
-require('electron-debug')();
-
 let mainWindow;
 
 function handleResize () {

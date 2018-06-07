@@ -32,8 +32,7 @@
   },
   "homepage": "https://github.com/arafatamim/keeper",
   "dependencies": {
-    "electron-config": "^1.0.0",
-    "electron-debug": "^1.0.1"
+    "electron-config": "^1.0.0"
   },
   "devDependencies": {
     "electron": "^1.4.4",
