@@ -9,34 +9,46 @@
   ],
   "scripts": {
     "start": "electron .",
-    "build": "npm run build:macos && npm run build:linux && npm run build:windows",
-    "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^/dist$' --platform=darwin --arch=x64 --icon=assets/icon.icns --app-bundle-id=com.andrepolischuk.keep && cd dist/Keep-darwin-x64 && zip -ryXq9 ../Keep-macos-${npm_package_version}.zip Keep.app",
-    "build:linux": "electron-packager . --overwrite --out=dist --ignore='^/dist$' --platform=linux --arch=x64 --app-bundle-id=com.andrepolischuk.keep && cd dist/keep-linux-x64 && zip -ryq9 ../keep-linux-${npm_package_version}.zip *",
-    "build:windows": "electron-packager . --overwrite --asar --out=dist --ignore='^/dist$' --platform=win32 --arch=ia32 --icon=assets/icon.ico --version-string.ProductName=$npm_package_productName && cd dist/Keep-win32-ia32 && zip -ryq9 ../Keep-windows-${npm_package_version}.zip *",
-    "test": "standard"
+    "postinstall": "install-app-deps",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/arafatamim/keeper"
   },
   "keywords": [
-    "electron-app",
     "electron",
     "google",
     "keep"
   ],
   "author": "Tamim Arafat <tamim.arafat@gmail.com>",
-  "license": "Unlicense",
-  "bugs": {
-    "url": "https://github.com/arafatamim/keeper/issues"
-  },
+  "license": "MIT",
   "homepage": "https://github.com/arafatamim/keeper",
   "dependencies": {
     "electron-config": "^1.0.0"
   },
   "devDependencies": {
     "electron": "^1.4.4",
-    "electron-packager": "^9.1.0",
+    "electron-builder": "^20.15.1",
     "standard": "^10.0.3"
+  },
+  "build": {
+    "appId": "com.arafatamim.keeper",
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "assets/icon.png",
+      "category": "Network;Utility"
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "assets/icon.ico"
+    },
+    "mac":{
+      "category": "public.app-category.productivity",
+      "icon": "assets/icon.icns"
+    }
   }
 }
