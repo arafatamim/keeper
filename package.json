@@ -29,8 +29,8 @@
     "electron-config": "^1.0.0"
   },
   "devDependencies": {
+    "electron-builder": "^20.14.7",
     "electron": "^1.4.4",
-    "electron-builder": "^20.15.1",
     "standard": "^10.0.3"
   },
   "build": {
@@ -39,14 +39,14 @@
       "target": [
         "AppImage"
       ],
-      "icon": "assets/icon.png",
+      "icon": "keeper.png",
       "category": "Network;Utility"
     },
     "win": {
       "target": "squirrel",
       "icon": "assets/icon.ico"
     },
-    "mac":{
+    "mac": {
       "category": "public.app-category.productivity",
       "icon": "assets/icon.icns"
     }
