@@ -2,7 +2,7 @@
 
 # Keeper
 
-[Google Keep](http://keep.google.com) now lives on your desktop, whenever you want it.
+[Google Keep](http://keep.google.com) now lives in your tray, whenever you want it.
 
 Powered by [Electron](http://electron.io).
 
